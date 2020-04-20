@@ -57,5 +57,8 @@ networks:
   rede_docker:
     driver: overlay' > /bexs-devops-exam/docker-compose.yml
 
+#Inicilizando o docker swarm
+cd /bexs-devops-exam ; docker swarm init
+
 #Iniciando a stack contendo o backend e o frontend.
 docker-compose -f /bexs-devops-exam/docker-compose.yml up
