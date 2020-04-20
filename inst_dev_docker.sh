@@ -28,7 +28,7 @@ CMD . /opt/venv/bin/activate && exec python frontend.py' > /bexs-devops-exam/fro
 docker build -t go-backend /bexs-devops-exam/backend/src/backend/
 
 #Alterando o arquivo frontend.py para que consiga efetuar a comunicação com o backend dentro da rede docker
-sed -i  's/localhost/bexsdevopsexam_go-backend_1/g' /bexs-devops-exam/frontend/src/frontend/frontend.py
+sed -i  's/localhost/bexs-devops-exam_go-backend_1/g' /bexs-devops-exam/frontend/src/frontend/frontend.py
 
 #Efetuando o build da imagem docker da aplicação frontend
 docker build -t py-frontend /bexs-devops-exam/frontend/src/frontend/
@@ -57,8 +57,8 @@ networks:
   rede_docker:
     driver: overlay' > /bexs-devops-exam/docker-compose.yml
 
-#Inicilizando o docker swarm e efetuando o deploy
-cd /bexs-devops-exam ; docker swarm init ; docker stack deploy
+#Inicilizando o docker swarm
+cd /bexs-devops-exam ; docker swarm init
 
 #Iniciando a stack contendo o backend e o frontend.
 docker-compose -f /bexs-devops-exam/docker-compose.yml up
